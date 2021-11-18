@@ -28,8 +28,8 @@ class Smzdm(object):
     def __json_check(self, msg):
         try:
             res = msg.json()
-            print(res)
-            return str(res['error_msg'])
+            # print(res)
+            return res['data']
         except Exception as e:
             print(f'Error: {e}')            
             return str(e)
@@ -46,10 +46,32 @@ class Smzdm(object):
 
         status = '失败'
 
-        resp = self.__json_check(msg)      
-        if resp == '':
+        resp = self.__json_check(msg)
+
+        # 签到天数
+        checkin_num = resp['checkin_num']
+
+        # 连续签到天数
+        continue_checkin_days =  resp['continue_checkin_days']
+
+        #金币
+        gold = resp['gold']
+
+
+        #获得经验
+        exp = resp['exp']
+
+        if resp != '':
             status = '成功'
         else:
             status += f', {resp}'
 
-        return f'{dateTime.strftime(fmt)}「什么值得买」签到{status}! {msg}'
+
+        return f'「什么值得买每日签到经验」：{exp} \n'\
+               f'「签到状态」：{status} \n' \
+               f'「签到天数」：{checkin_num} \n' \
+               f'「连续签到天数」：{continue_checkin_days} \n' \
+               f'「金币」：{gold} \n' \
+               f'「签到时间」：{dateTime.strftime(fmt)} \n'
+
+
