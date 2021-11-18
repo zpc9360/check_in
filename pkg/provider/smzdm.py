@@ -40,7 +40,10 @@ class Smzdm(object):
         # print(self.session.headers)
         msg = self.session.get(self.url)
         
-        dateTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) 
+        # 世界标准时间
+        utc_time = time.localtime();
+        # 北京时间UTC+8
+        cst_time =utc_time.astimezone(timezone(timedelta(hours=-8))).strftime("%Y-%m-%d %H:%M:%S")
         
         status = '失败'
 
@@ -50,4 +53,4 @@ class Smzdm(object):
         else:
             status += f', {resp}'
 
-        return f'{dateTime}「什么值得买」每日签到{status}!'
+        return f'{cst_time}「什么值得买」签到{status}!'
