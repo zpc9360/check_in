@@ -3,10 +3,8 @@ SMZDM
 '''
 
 import requests
-import time  # 引入time模块
-from datetime import datetime
-from datetime import timezone
-from datetime import timedelta
+from datetime import datetime, timezone, timedelta
+
 
 class Smzdm(object):
     def __init__(self, cookies):
@@ -43,11 +41,12 @@ class Smzdm(object):
         # print(self.session.headers)
         msg = self.session.get(self.url)
         
-        # 世界标准时间
-        utc_time = time.localtime();
-        # 北京时间UTC+8
-        cst_time =utc_time.astimezone(timezone(timedelta(hours=-8))).strftime("%Y-%m-%d %H:%M:%S")
-        
+        tz = timezone(timedelta(hours=+8))
+
+        fmt = '%Y-%m-%dT%H:%M:%S.%f%z'
+
+        dateTime = datetime.today().astimezone(tz)
+
         status = '失败'
 
         resp = self.__json_check(msg)      
@@ -56,4 +55,4 @@ class Smzdm(object):
         else:
             status += f', {resp}'
 
-        return f'{cst_time}「什么值得买」签到{status}!'
+        return f'{dateTime.strftime(fmt)}「什么值得买」签到{status}!'
