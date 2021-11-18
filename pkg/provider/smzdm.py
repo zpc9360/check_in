@@ -1,6 +1,3 @@
-'''
-SMZDM
-'''
 
 import requests
 from datetime import datetime, timezone, timedelta
@@ -43,7 +40,7 @@ class Smzdm(object):
         
         tz = timezone(timedelta(hours=+8))
 
-        fmt = '%Y-%m-%dT%H:%M:%S.%f%z'
+        fmt = '%Y-%m-%dT%H:%M:%S'
 
         dateTime = datetime.today().astimezone(tz)
 
