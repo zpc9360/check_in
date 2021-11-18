@@ -69,7 +69,7 @@ class Smzdm(object):
 
         return f'「签到状态」：{status} \n' \
                f'「金币」：{gold} \n' \
-               f'「签到天数」：{checkin_num} \n' \
+               f'「已签到天数」：{checkin_num} \n' \
                f'「连续签到天数」：{continue_checkin_days} \n' \
                f'「每日签到经验」：{exp} \n' \
                f'「签到时间」：{dateTime.strftime(fmt)} \n'
