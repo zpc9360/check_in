@@ -40,7 +40,7 @@ class Smzdm(object):
         
         tz = timezone(timedelta(hours=+8))
 
-        fmt = '%Y-%m-%dT%H:%M:%S'
+        fmt = '%Y-%m-%d %H:%M:%S'
 
         dateTime = datetime.today().astimezone(tz)
 
@@ -52,4 +52,4 @@ class Smzdm(object):
         else:
             status += f', {resp}'
 
-        return f'{dateTime.strftime(fmt)}「什么值得买」签到{status}!'
+        return f'{dateTime.strftime(fmt)}「什么值得买」签到{status}! {msg}'
