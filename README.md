@@ -14,7 +14,7 @@
   > 因 GitHub Actions 为美西时间，+13 小时为中国时间（即设置的时候需要 -13 小时）。
 
 ### 2. 使用方法
-1. `Fork` 此项目，欢迎点`star`~
+1. `Fork` 此项目，欢迎点`star`
 2. 设置签到平台的 cookie 信息    
     2.1. Secret 新增`SMZDM_COOKIE`，从[什么值得买官网](https://www.smzdm.com/) 提取的 cookie 信息。   
     2.2. Secret 新增`V2EX_COOKIE`，从[V2EX 官网](https://v2ex.com/) 提取的 cookie 信息。   
