@@ -3,6 +3,7 @@ SMZDM
 '''
 
 import requests
+import time  # 引入time模块
 
 class Smzdm(object):
     def __init__(self, cookies):
@@ -29,7 +30,7 @@ class Smzdm(object):
     def __json_check(self, msg):
         try:
             res = msg.json()
-            # print(res)
+            print(res)
             return str(res['error_msg'])
         except Exception as e:
             print(f'Error: {e}')            
@@ -39,6 +40,8 @@ class Smzdm(object):
         # print(self.session.headers)
         msg = self.session.get(self.url)
         
+        dateTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) 
+        
         status = '失败'
 
         resp = self.__json_check(msg)      
@@ -47,4 +50,4 @@ class Smzdm(object):
         else:
             status += f', {resp}'
 
-        return f'「什么值得买」每日签到{status}!'
+        return f'{dateTime}「什么值得买」每日签到{status}!'
